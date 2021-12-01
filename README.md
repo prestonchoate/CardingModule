@@ -1,7 +1,7 @@
 # PrestonChoate CardingPrevention
 
 ```#bash
-PrestonChoate/module-carding-prevention
+prestonchoate/module-carding-prevention
 ```
 
 - [Main Functionalities](#markdown-header-main-functionalities)
@@ -21,7 +21,7 @@ To install via Composer you need to add this repository to your Magneto project.
 
 Then require the module with:
 
-`composer require PrestonChoate/module-carding-prevention`
+`composer require prestonchoate/module-carding-prevention`
 
 Finally run the following commands to fully install the module:
 
