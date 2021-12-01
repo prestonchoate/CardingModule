@@ -1,0 +1,13 @@
+{
+  "name": "prestonchoate/module-carding-prevention",
+  "description": "Module to prevent carding attacks at M2 checkout",
+  "minimum-stability": "stable",
+  "license": "GPL-3.0-or-later",
+  "require": {},
+  "autoload": {
+    "files": ["registration.php"],
+    "psr-4": {
+      "PrestonChoate\\CardingPrevention\\": ""
+    }
+  }
+}

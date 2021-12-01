@@ -1,0 +1,17 @@
+<?xml version="1.0" ?>
+<!--
+/**
+  * @package     PrestonChoate/CardingPrevention
+  * @author      Preston Choate <pchoate15@gmail.com>
+  * @copyright   Copyright © 2021. All rights reserved.
+  */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="PrestonChoate_Checkout_Carding_Prevention"
+                sortOrder="10"
+                type="PrestonChoate\CardingPrevention\Plugin\Magento\Checkout\Model\CardingPreventionPlugin"
+                disabled="false"/>
+    </type>
+</config>
