@@ -26,7 +26,7 @@ Then require the module with:
 Finally run the following commands to fully install the module:
 
 ```#bash
-bin/magento module:enable PrestonChoate_CardingModule
+bin/magento module:enable PrestonChoate_CardingPrevention
 bin/magento setup:upgrade
 bin/magento cache:flush
 ```
