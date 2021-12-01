@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<!--
+/**
+  * @package     PrestonChoate/CardingPrevention
+  * @author      Preston Choate <pchoate15@gmail.com>
+  * @copyright   Copyright © 2021. All rights reserved.
+  */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="PrestonChoate_CardingPrevention" setup_version="1.0.0">
+        <sequence>
+            <module name="Magento_Checkout"/>
+        </sequence>
+    </module>
+</config>

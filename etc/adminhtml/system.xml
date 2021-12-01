@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<!--
+/**
+  * @package     PrestonChoate/CardingPrevention
+  * @author      Preston Choate <pchoate15@gmail.com>
+  * @copyright   Copyright © 2021. All rights reserved.
+  */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="carding_prevention" translate="label" type="text" sortOrder="700" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Carding Prevention</label>
+            <tab>security</tab>
+            <resource>PrestonChoate_CardingPrevention::config_prestonchoate_cardingprevention</resource>
+            <group id="general" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>General Config</label>
+                <field id="enabled" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" type="select">
+                    <label>Enable Carding Prevention</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="threshold" translate="label comment" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" type="text">
+                    <label>TTL For Transaction ID</label>
+                    <comment>Number of seconds to hold onto a previously used transaction ID. If another transaction occurs with this same ID the transaction will be denied.</comment>
+                    <validate>validate-number validate-digits validate-not-negative-number</validate>
+                    <depends>
+                        <field id="carding_prevention/general/enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
