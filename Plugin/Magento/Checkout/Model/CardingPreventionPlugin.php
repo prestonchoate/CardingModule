@@ -8,9 +8,9 @@ declare(strict_types=1);
 
 namespace PrestonChoate\CardingPrevention\Plugin\Magento\Checkout\Model;
 use PrestonChoate\CardingPrevention\Model\Config;
+use Magento\Checkout\Exception as CheckoutException;
 use Magento\Checkout\Model\GuestPaymentInformationManagement;
 use Magento\Framework\App\CacheInterface;
-use Magento\Framework\Exception\AuthorizationException;
 use Magento\Quote\Api\Data\AddressInterface;
 use Magento\Quote\Api\Data\PaymentInterface;
 
@@ -53,23 +53,6 @@ class CardingPreventionPlugin
     }
 
     /**
-     * @param GuestPaymentInformationManagement $subject
-     * @param $cartId
-     * @param $email
-     * @param PaymentInterface $paymentMethod
-     * @param AddressInterface|null $billingAddress
-     */
-    public function beforeSavePaymentInformation(
-        GuestPaymentInformationManagement $subject,
-        $cartId,
-        $email,
-        PaymentInterface $paymentMethod,
-        AddressInterface $billingAddress = null)
-    {
-        $this->checkCartId($cartId);
-    }
-
-    /**
      * Checks cart ID and throws exception if it has been used too frequently
      *
      * @param $cartId
@@ -88,7 +71,7 @@ class CardingPreventionPlugin
             $value = $this->cache->load($cartId);
             $this->cache->save($data, $cartId, $tags, $lifetime);
             if ($value) {
-                throw new AuthorizationException(__('Too many requests'));
+                throw new CheckoutException(__('Too many requests'));
             }
 
         }
