@@ -41,7 +41,6 @@ class CardingPreventionPlugin
      * @param $email
      * @param PaymentInterface $paymentMethod
      * @param AddressInterface|null $billingAddress
-     * @throws AuthorizationException
      */
     public function beforeSavePaymentInformationAndPlaceOrder(
         GuestPaymentInformationManagement $subject,
@@ -49,6 +48,33 @@ class CardingPreventionPlugin
         $email,
         PaymentInterface $paymentMethod,
         AddressInterface $billingAddress = null)
+    {
+        $this->checkCartId($cartId);
+    }
+
+    /**
+     * @param GuestPaymentInformationManagement $subject
+     * @param $cartId
+     * @param $email
+     * @param PaymentInterface $paymentMethod
+     * @param AddressInterface|null $billingAddress
+     */
+    public function beforeSavePaymentInformation(
+        GuestPaymentInformationManagement $subject,
+        $cartId,
+        $email,
+        PaymentInterface $paymentMethod,
+        AddressInterface $billingAddress = null)
+    {
+        $this->checkCartId($cartId);
+    }
+
+    /**
+     * Checks cart ID and throws exception if it has been used too frequently
+     *
+     * @param $cartId
+     */
+    protected function checkCartId($cartId)
     {
         $lifetime = $this->config->getThreshold();
         $lifetime = ctype_digit($lifetime) ? intval($lifetime) : 0;
